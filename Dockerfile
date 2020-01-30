@@ -30,3 +30,11 @@ RUN echo "set debconf/frontend noninteractive" | DEBIAN_FRONTEND=noninteractive 
     && sudo apt-get -yq --fix-missing install \
     r-base \
     r-base-dev
+
+RUN sudo chmod 777 /usr/local/lib/R/site-library \
+    && sudo Rscript -e "install.packages(c('littler', 'docopt'))" \
+    && sudo ln -s /usr/local/lib/R/site-library/littler/examples/install2.r /usr/local/bin/install2.r \
+    && sudo ln -s /usr/local/lib/R/site-library/littler/examples/installGithub.r /usr/local/bin/installGithub.r \
+    && sudo ln -s /usr/local/lib/R/site-library/littler/bin/r /usr/local/bin/r \
+    && install2.r lmerTest \
+    sudo chmod 771 /usr/local/lib/R/site-library
