@@ -1,0 +1,8 @@
+{
+    "julia.enableTelemetry": true,
+    "juliaFormatter.whitespace_ops_in_indices": true,
+    "juliaFormatter.whitespace_typedefs": true,
+    "[julia]": {
+        "editor.defaultFormatter": "singularitti.vscode-julia-formatter"
+    }
+}
