@@ -1,8 +1,9 @@
-FROM codercom/code-server
-ENV JULIA_VERSION=1.3.1 \
-    JULIA_VSCODE_VERSION=0.14.0-rc.1 \
+FROM codercom/code-server:3.0.2
+
+ENV JULIA_VERSION=1.4.0 \
+    JULIA_VSCODE_VERSION=0.15.19 \
     JULIA_VSCODE_FORMATTER=0.0.4 \
-    R_VERSION=3.6.2
+    R_VERSION=3.6.3
 
 COPY assets/lacroixdavid1.vscode-format-context-menu-1.0.4.vsix /home/coder/project/lacroixdavid1.vscode-format-context-menu-1.0.4.vsix
 COPY assets/singularitti.vscode-julia-formatter-0.0.4.vsix /home/coder/project/singularitti.vscode-julia-formatter-0.0.4.vsix
@@ -12,7 +13,7 @@ RUN cd /usr/local/bin \
     && sudo mkdir julia_dir \
     && cd julia_dir \
     && sudo wget -q https://julialang-s3.julialang.org/bin/linux/x64/`echo ${JULIA_VERSION} | cut -d. -f 1,2`/julia-${JULIA_VERSION}-linux-x86_64.tar.gz \
-    && echo "faa707c8343780a6fe5eaf13490355e8190acf8e2c189b9e7ecbddb0fa2643ad *julia-${JULIA_VERSION}-linux-x86_64.tar.gz" | sha256sum -c - \
+    && echo "30d126dc3598f3cd0942de21cc38493658037ccc40eb0882b3b4c418770ca751 *julia-${JULIA_VERSION}-linux-x86_64.tar.gz" | sha256sum -c - \
     && sudo tar fxz julia-${JULIA_VERSION}-linux-x86_64.tar.gz \
     && sudo rm -R julia-${JULIA_VERSION}-linux-x86_64.tar.gz \
     && cd .. \
